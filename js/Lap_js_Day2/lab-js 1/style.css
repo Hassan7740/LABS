@@ -1,0 +1,15 @@
+section{
+    display: flex;
+    flex-flow: column;    
+}
+
+.input{
+    display: flex;
+    flex-flow: column;
+    margin-top: 40px;
+}
+
+label{
+    margin-top: 10px;
+    /* display: flex; */
+}

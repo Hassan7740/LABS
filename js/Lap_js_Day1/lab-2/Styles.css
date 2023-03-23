@@ -1,0 +1,57 @@
+*{
+    padding:0;
+    margin:0;
+}
+
+header{
+    background-color: burlywood;
+    font-size: xx-large;
+    font-weight: bolder;
+    text-align: center;
+    vertical-align: center;
+}
+
+nav {
+    background-color: blanchedalmond;
+}
+ul{
+    list-style-type: none;
+}
+ul li{
+    display: inline;
+    padding: 0 10px;
+    background-color: brown;
+}
+ul li a{
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px
+}
+section{
+    background-color: burlywood;
+    margin: 10px 20px;
+}
+section h1{
+    color: brown;
+
+}
+Section p{
+    color:black;
+    text-align: justify;
+    font-size: small;
+    font-weight: bold;
+}
+
+footer{
+    background-color: rgb(59, 59, 59);
+    color: white;
+    /* text-align: center; */
+    margin-top: 35px;
+    height: 75px;
+}
+footer h4{
+    text-align: center;
+    height: 100%;
+    vertical-align: center;
+    padding-top: 25px;
+}

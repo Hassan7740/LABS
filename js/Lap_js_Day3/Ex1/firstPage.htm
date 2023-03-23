@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <title>Fist Assignment</title>
+        <script src="firstPage.js"></script>
+    </head>
+    <body>
+        <div class="cont">
+            <header>
+                <h3> Contact Us </h3>
+            </header>
+            <form name="form1" onsubmit="scan()">
+                <fieldset>
+                    <legend><span>1</span>Account Information </legend>
+                    <section><label>UserName</label> <input type="name" id="userName" name="test" required></section>
+                    <section><label>Password</label> <input type="password" id="pass" name="test" required> </section>
+                    <section><label>Confirm Password</label> <input type="password" id="confPass" name="test" required> </section>
+                    <section><label>Credit Card No</label> <input type="number" id="ccn" name="test"> </section>
+                </fieldset>
+                <fieldset>
+                    <legend><span>2</span>Personal Information </legend>
+                    <section><label>Name</label> <input type="name" id="Name" name="test"> </section>
+                    <section><label>Date of Birth</label> <input type="date" id="date" name="test"> </section>
+                    <section><label>Favorite Color</label> <input type="color" id="color" name="test"> </section>
+                    <section><label>Profile Photo(s)</label> <input type="file" id="img" name="test"> </section>
+                    <!-- <section><label>Favorite Browser</label> <input type="url" id="bro" name="bro"> </section> -->
+                    <section><label>Favorite Browser</label> <select  name="test" id="Browser"><option value="">--</option> <option value="Google Chrome">Google Chrome</option><option value="FireFox"> FireFox</option><option value="Opera">Opera</option></select> </section>
+                </fieldset>
+                <fieldset>
+                    <legend><span>3</span>Company Information </legend>
+                    <section><label>No of Employees</label> <input type="number" id="noe" name="test"> </section>
+                    <section><label>Estimated Revenue</label> <input type="range" id="er" name="test"> </section>
+                </fieldset>
+                <fieldset>
+                    <legend><span>4</span>Contact Information </legend>
+                    <section><label>Email Address(es)</label> <input type="email" id="email" name="test"> </section>
+                    <section><label>Phone Number</label> <input type="number" id="ph" name="test"> </section>
+                    <section><label>Website URL</label> <input type="url" id="url" name="test"> </section>
+                </fieldset>
+                <fieldset >
+                    <div class="last">
+                        <section><input type="submit"   class="sub" id="sub" value="Submit"></section>
+                        <section> <input type="reset" class="res" value="Resete"> </section>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+
+
+
+        
+    </body>
+
+</html>

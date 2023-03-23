@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+                        http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd"
+                        default-lazy-init="false">
+
+    <context:annotation-config />
+    <context:property-placeholder location="hibernate.properties"/>
+
+    <bean id="property" class="com.lap.Hibernate">
+        <property name="name" value="${hibernate.dialect}"></property>
+        <property name="driver" value="${hibernate.dialect}"></property>
+    </bean>
+    
+
+    <bean id="templete" abstract="true">
+        <property name="attendes">
+            <map>
+                <entry key="ahmed" value-ref="sInstance"></entry>
+            </map>
+        </property>
+    </bean>
+
+    <bean id="door" class="com.lap.DoorImp" />
+    <!-- <bean id="door2" class="com.lap.DoorImp" /> -->
+    
+    <bean id="carInstance" class="com.lap.CarImp" >
+    </bean>
+
+    <bean id="carInstance2" class="com.lap.CarImp">
+      
+    </bean>
+
+    <bean id="personInstanceId" class="com.lap.Student" p:car-ref="carInstance2" />
+
+    <bean id="eInstance" class="com.lap.Employee" >
+        <constructor-arg index="0" value="Hassan"></constructor-arg>
+        <constructor-arg index="1" value="27"></constructor-arg>
+        <constructor-arg index="2" value="false"></constructor-arg>
+        <!-- <property name="car" ref="carInstance"></property> -->
+    </bean>
+
+    <bean id="sInstance" class="com.lap.Employee">
+        <constructor-arg index="0" value="ahmed"></constructor-arg>
+        <constructor-arg index="1" value="23"></constructor-arg>
+        <constructor-arg index="2" value="false"></constructor-arg>
+        <!-- <property name="car" ref="carInstance"></property> -->
+    </bean>
+
+    <bean id="dog" class="com.lap.Dog" init-method="init2" scope="prototype">
+    </bean>
+
+    <bean id="zoo" class="com.lap.Zoo">
+        <property name="animals">
+            <list>
+                <ref bean="dog"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="company" class="com.lap.Company" parent="templete">
+        <property name="attendes">
+            <map merge="true">
+                <entry key="hassan" value-ref="eInstance" />
+            </map>
+        </property>
+    </bean>
+
+    <bean id="Flat" class="com.lap.Flat"></bean>
+    <bean id="Building" class="com.lap.Building"></bean>
+
+    <bean id="room1" class="com.lap.Room">
+
+    </bean>
+</beans>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+                        http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd"
+    default-lazy-init="false">
+
+    <bean id="flat" class="com.lap.Flat" />
+    <bean id="before" class="com.lap.BeforeAdvisor" />
+    <bean id="after" class="com.lap.AfterAdvisor" />
+    <bean id="around" class="com.lap.AroundAdvisor"/>
+    <bean id="exception" class="com.lap.ThrowAdvisor"/>
+    <bean id="valid" class="com.lap.Validator"/>
+
+    <!-- <bean id="proxy" class="org.springframework.aop.framework.ProxyFactoryBean">  
+    <property name="target" ref="flat"></property>  
+    <property name="interceptorNames">  
+    <list>  
+    <value>before</value>  
+    <value>after</value>  
+    </list>  
+    </property>  
+    </bean>   -->
+
+    <bean id="method" class="org.springframework.aop.support.NameMatchMethodPointcut">
+        <property name="mappedName" value="getMyNum"></property>
+    </bean>
+    <bean id="validator" class="org.springframework.aop.support.NameMatchMethodPointcut">
+        <property name="mappedName" value="validate"></property>
+    </bean>
+
+    <bean id="aspectMethodBefore" class="org.springframework.aop.support.DefaultPointcutAdvisor">
+        <property name="pointcut" ref="method"></property>
+        <property name="advice" ref="before"></property>
+    </bean>
+    <bean id="aspectMethodAfter" class="org.springframework.aop.support.DefaultPointcutAdvisor">
+        <property name="pointcut" ref="method"></property>
+        <property name="advice" ref="after"></property>
+    </bean>
+    
+    <bean id="aspectMethodAround" class="org.springframework.aop.support.DefaultPointcutAdvisor">
+        <property name="pointcut" ref="method"></property>
+        <property name="advice" ref="around"></property>
+    </bean>
+    
+    <bean id="aspectMethodException" class="org.springframework.aop.support.DefaultPointcutAdvisor">
+        <property name="pointcut" ref="method"></property>
+        <property name="advice" ref="around"></property>
+    </bean>
+    
+    <bean id="aspectMethodEx" class="org.springframework.aop.support.DefaultPointcutAdvisor">
+        <property name="pointcut" ref="validator"></property>
+        <property name="advice" ref="exception"></property>
+    </bean>
+    
+    <bean id="proxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="target" ref="flat"></property>
+        <property name="interceptorNames">
+            <list>
+                <value>aspectMethodBefore</value>
+                <value>aspectMethodAfter</value>
+                <value>aspectMethodAround</value>
+            </list>
+        </property>
+    </bean>
+    <bean id="proxy1" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="target" ref="valid"></property>
+        <property name="interceptorNames">
+            <list>
+                <value>aspectMethodEx</value>
+            </list>
+        </property>
+    </bean>
+
+</beans>

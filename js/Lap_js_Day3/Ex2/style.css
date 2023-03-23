@@ -1,0 +1,17 @@
+body {
+    display: flex;
+    flex-flow: column;
+}
+
+label{
+    margin : 10px
+}
+select{
+    width: 170px;
+    height: 20px;
+}
+
+button{
+    margin-left: 15px;
+    margin-top: 15px;
+}

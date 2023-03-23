@@ -1,0 +1,61 @@
+<html>
+
+<head>
+    <title>
+        Page
+    </title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <section>
+        <h1>factorial table from 1 to 10 </h1>
+        <button onclick="findFactor()" id="btn">find factorial</button>
+        <table>
+            <tbody id="table_body">
+
+            </tbody>
+        </table>
+        
+    </section>
+
+    <script>
+
+        function factorial(n) {
+  let answer = 1;
+  if (n == 0 || n == 1) {
+    return answer;
+  }
+  else if (n > 1) {
+    for (var i = n; i >= 1; i--) {
+      answer = answer * i;
+    }
+    return answer;
+  }
+  else {
+    return "number has to be positive."
+  }
+}
+////////////////////////////////////////////////////////////
+
+for (let i = 0; i < 11; i++) {
+  document.getElementById("table_body").innerHTML += `
+  <tr>
+      <td>${i}!</td>
+      <td>${factorial(i)}</td>
+  </tr>
+  `
+}
+
+//////////////////////////////////////////////////////////////
+function findFactor(){
+    let x = prompt("enter a number");
+    window.alert(factorial(x));
+}
+
+/////////////////////////////////////////////////////////////
+// document.getElementById("btn").addEventListener("onClick" , findFactor)
+    </script>
+</body>
+
+</html>

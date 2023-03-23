@@ -1,0 +1,23 @@
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
+    version="5.0"
+    metadata-complete="false">
+
+    <context-param>
+        <param-name>contextParam</param-name>
+        <param-value>hassan</param-value>
+    </context-param>
+    <servlet>
+        <servlet-name>HomeServlet</servlet-name>
+        <servlet-class>com.myservlet.HomeServlet</servlet-class>
+        <init-param>
+            <param-name>AdminEmail</param-name>
+            <param-value>admin@iti.gov</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>HomeServlet</servlet-name>
+        <url-pattern>/home</url-pattern>
+    </servlet-mapping>
+</web-app>

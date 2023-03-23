@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="carInstance" class="com.lap.CarImp">
+        <constructor-arg>
+            <bean class="com.lap.DoorImp"></bean>
+        </constructor-arg>
+    </bean>
+
+    <bean id="carInstance2" class="com.lap.CarImp">
+        <constructor-arg>
+            <bean class="com.lap.DoorImp"></bean>
+        </constructor-arg>
+    </bean>
+
+    <bean id="personInstanceId" class="com.lap.Student"> 
+    <property name="car" ref="carInstance2"></property>
+    </bean>
+
+    <bean id="eInstance" class="com.lap.Employee">
+        <constructor-arg index="0" value="Hassan"></constructor-arg>
+        <constructor-arg index="1" value="27"></constructor-arg>
+        <constructor-arg index="2" value="false"></constructor-arg>
+        <property name="car" ref="carInstance"></property>
+    </bean>
+
+</beans>
