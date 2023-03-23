@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+    default-lazy-init="true"
+    >
+
+    <bean id="door" class="com.lap.DoorImp"/>
+    <bean id="carInstance" class="com.lap.CarImp" autowire="byName">
+    </bean>
+
+    <bean id="carInstance2" class="com.lap.CarImp" autowire-candidate="false">
+    </bean>
+
+    <bean id="personInstanceId" class="com.lap.Student" p:car-ref="carInstance2" />
+
+    <bean id="eInstance" class="com.lap.Employee" autowire="byType">
+        <constructor-arg index="0" value="Hassan"></constructor-arg>
+        <constructor-arg index="1" value="27"></constructor-arg>
+        <constructor-arg index="2" value="false"></constructor-arg>
+        <!-- <property name="car" ref="carInstance"></property> -->
+    </bean>
+
+    <bean id="dog" class="com.lap.Dog" init-method="init" destroy-method="destroy" scope="prototype">
+    </bean>
+
+    <bean id="zoo" class="com.lap.Zoo" >
+        <property name="animals">
+            <list>
+                <ref bean="dog"/>
+            </list>
+        </property>
+    </bean>  
+
+    <bean id="company" class="com.lap.Company">
+        <property name="attendes">
+            <map>
+                <entry key="hassan" value-ref="eInstance"/>
+            </map>
+        </property>
+    </bean>
+
+    <bean id="Flat" class="com.lap.Flat"></bean>
+    <bean id="Building" class="com.lap.Building" autowire="constructor"></bean>
+</beans>
